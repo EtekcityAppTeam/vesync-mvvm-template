@@ -7,7 +7,17 @@ import com.github.houweiandroid.vesyncmvvmtemplate.services.MyProjectService
 
 internal class MyProjectManagerListener : ProjectManagerListener {
 
+    companion object {
+        var projectInstance: Project? = null
+    }
+
     override fun projectOpened(project: Project) {
+        projectInstance = project
         project.service<MyProjectService>()
+    }
+
+    override fun projectClosed(project: Project) {
+        projectInstance = null
+        super.projectClosed(project)
     }
 }
