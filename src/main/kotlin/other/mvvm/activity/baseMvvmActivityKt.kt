@@ -21,7 +21,7 @@ import com.vesync.base.BaseMvvmActivity
 import ${applicationPackage}.BR
 import ${applicationPackage}.R
 import ${applicationPackage}.databinding.$bindingName
-import ${packageName}.viewmodel.${viewModelName}
+import ${packageName}.${viewModelName}
 
 class $activityName : BaseMvvmActivity<$bindingName, $viewModelName>() {
 
