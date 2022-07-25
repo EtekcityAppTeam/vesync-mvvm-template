@@ -4,6 +4,8 @@ import com.android.tools.idea.wizard.template.Language
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
+import other.mvvm.layout.baseMvvmLayout
+import other.mvvm.viewmodel.baseMvvmViewModelKt
 
 /**
  * Author: YulinZhang
@@ -15,11 +17,11 @@ import com.android.tools.idea.wizard.template.impl.activities.common.generateMan
  */
 fun RecipeExecutor.baseMvvmActivityRecipe(
     moduleData: ModuleTemplateData,
-    activityClass: String,
-    activityBinding: String,
-    viewModelClass: String,
-    layoutName: String,
     packageName: String,
+    activityName: String,
+    layoutName: String,
+    viewModelName: String,
+    bindingName: String,
     language: Language
 ) {
 
@@ -28,7 +30,7 @@ fun RecipeExecutor.baseMvvmActivityRecipe(
 
     generateManifest(
         moduleData = moduleData,
-        activityClass = "${activityClass}Activity",
+        activityClass = activityName,
         packageName = packageName,
         isLauncher = false,
         hasNoActionBar = false,
@@ -37,17 +39,25 @@ fun RecipeExecutor.baseMvvmActivityRecipe(
 
     when (language) {
         Language.Kotlin -> {
-            // application package
+            // save activity
             val mvvmActivity = baseMvvmActivityKt(
                 applicationPackage = projectData.applicationPackage,
-                activityClass = activityClass,
-                activityBinding = activityBinding,
-                viewModelClass = viewModelClass,
+                activityName = activityName,
+                bindingName = bindingName,
+                viewModelName = viewModelName,
                 layoutName = layoutName,
                 packageName = packageName
             )
-            // save activity
-            save(mvvmActivity, srcOut.resolve("ui/${activityClass}Activity.${ktOrJavaExt}"))
+            save(mvvmActivity, srcOut.resolve("activity/${activityName}.${ktOrJavaExt}"))
+            // save layout
+            val mvvmLayout = baseMvvmLayout(
+                viewModelName = viewModelName,
+                packageName = packageName
+            )
+            save(mvvmLayout, resOut.resolve("layout/${layoutName}.xml"))
+            // save viewmodel
+            val mvvmViewModel = baseMvvmViewModelKt(viewModelName = viewModelName)
+            save(mvvmViewModel, srcOut.resolve("viewmodel/${viewModelName}.${ktOrJavaExt}"))
         }
         Language.Java -> {
 
