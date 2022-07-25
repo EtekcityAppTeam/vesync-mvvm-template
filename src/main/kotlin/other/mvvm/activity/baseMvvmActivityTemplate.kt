@@ -16,8 +16,8 @@ val baseMvvmActivityTemplate
         name = "base mvvm activity"
         description = """
             适用于创建mvvm activity的模板
-            请选择相对路径名，创建后的activity会放置在packageName.activity，viewmodel会放置在packageName.viewmodel包下
-            创建完成后会自动编译
+            请选择相对路径名，activity与viewModel文件会被同时创建在此路径名下
+            创建完成后需要对新产生的文件编译
             """
         minApi = MIN_API
         category = Category.Other
@@ -25,20 +25,28 @@ val baseMvvmActivityTemplate
         screens = listOf(WizardUiContext.ActivityGallery, WizardUiContext.MenuEntry, WizardUiContext.NewProject, WizardUiContext.NewModule)
 
         val prefixName = stringParameter {
-            name = "component name"
+            name = """
+                组件名
+                请输入组件名（用于命名后续生成的文件），如Store，没有则不用输入
+            """.trimIndent()
             default = ""
-            help = "请输入组件资源前缀名，比如store，不需要则不用输入"
         }
 
         val activityName = stringParameter {
-            name = "activity name"
+            name = """
+                activity名
+                请输入activity名称，请不要包含组件前缀，请不要包含'Activity'后缀
+            """.trimIndent()
             default = "Main"
             help = "请输入名称，请不要包含前缀名，请不要不包含'Activity'"
             constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
         }
 
         val layoutName = stringParameter {
-            name = "layout name"
+            name = """
+                布局名
+                请输入xml布局文件名，默认自动生成
+            """.trimIndent()
             default = "activity_"
             help = "请输入布局名，默认自动生成"
             constraints = listOf(Constraint.LAYOUT, Constraint.UNIQUE, Constraint.NONEMPTY)
@@ -46,7 +54,10 @@ val baseMvvmActivityTemplate
         }
 
         val packageName = stringParameter {
-            name = "package name"
+            name = """
+                相对路径名
+                可自定义相对路径，文件会被创建在此路径之下
+            """.trimIndent()
             visible = { !isNewModule }
             default = "com.etekcity.vesyncplatform"
             constraints = listOf(Constraint.PACKAGE)
@@ -54,8 +65,7 @@ val baseMvvmActivityTemplate
         }
 
         val language = enumParameter<Language> {
-            name = "programming language"
-            help = "请选择编程语言"
+            name = "请选择编程语言"
             default = Language.Kotlin
         }
 

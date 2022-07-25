@@ -1,9 +1,10 @@
 package other.mvvm.viewmodel
 
 fun baseMvvmViewModelKt(
-    viewModelName: String
+    viewModelName: String,
+    packageName: String
 ) = """
-package com.vesync.viewmodel
+package $packageName
 
 import android.app.Application
 import com.vesync.base.BaseViewModel

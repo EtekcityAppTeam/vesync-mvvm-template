@@ -10,7 +10,7 @@ fun baseMvvmActivityKt(
     layoutName: String,
     packageName: String
 ) = """
-package ${packageName}.activity
+package $packageName
 
 import android.content.Context
 import android.content.Intent

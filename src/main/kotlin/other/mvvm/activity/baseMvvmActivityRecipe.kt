@@ -34,7 +34,7 @@ fun RecipeExecutor.baseMvvmActivityRecipe(
         packageName = packageName,
         isLauncher = false,
         hasNoActionBar = false,
-        generateActivityTitle = true
+        generateActivityTitle = false
     )
 
     when (language) {
@@ -48,7 +48,7 @@ fun RecipeExecutor.baseMvvmActivityRecipe(
                 layoutName = layoutName,
                 packageName = packageName
             )
-            save(mvvmActivity, srcOut.resolve("activity/${activityName}.${ktOrJavaExt}"))
+            save(mvvmActivity, srcOut.resolve("${activityName}.${ktOrJavaExt}"))
             // save layout
             val mvvmLayout = baseMvvmLayout(
                 viewModelName = viewModelName,
@@ -56,8 +56,11 @@ fun RecipeExecutor.baseMvvmActivityRecipe(
             )
             save(mvvmLayout, resOut.resolve("layout/${layoutName}.xml"))
             // save viewmodel
-            val mvvmViewModel = baseMvvmViewModelKt(viewModelName = viewModelName)
-            save(mvvmViewModel, srcOut.resolve("viewmodel/${viewModelName}.${ktOrJavaExt}"))
+            val mvvmViewModel = baseMvvmViewModelKt(
+                viewModelName = viewModelName,
+                packageName = packageName
+            )
+            save(mvvmViewModel, srcOut.resolve("${viewModelName}.${ktOrJavaExt}"))
         }
         Language.Java -> {
 
