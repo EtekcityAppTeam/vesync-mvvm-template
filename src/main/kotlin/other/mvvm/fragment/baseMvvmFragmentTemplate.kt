@@ -1,4 +1,4 @@
-package other.mvvm.activity
+package other.mvvm.fragment
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
@@ -8,20 +8,20 @@ import other.mvvm.BaseMvvmConstant
 
 /**
  * Author: YulinZhang
- * Date: 2022/7/6 16:26
+ * Date: 2022/7/26 13:54
  * Description:
  * History:
  * <author> <time> <version> <desc>
- * YulinZhang 2022/7/6 1.0 首次创建
+ * YulinZhang 2022/7/26 1.0 首次创建
  */
-val baseMvvmActivityTemplate
+val baseMvvmFragmentTemplate
     get() = template {
-        name = "base mvvm activity"
+        name = "base mvvm fragment"
         description = """
-            适用于创建mvvm activity的模板
-            请选择相对路径名，activity与viewModel文件会被同时创建在此路径名下
+            适用于创建mvvm fragment的模板
+            请选择相对路径名，fragment与viewModel文件会被同时创建在此路径名下
             创建完成后需要对新产生的文件编译
-            """.trimIndent()
+        """.trimIndent()
         minApi = MIN_API
         category = Category.Other
         formFactor = FormFactor.Mobile
@@ -35,13 +35,13 @@ val baseMvvmActivityTemplate
             default = ""
         }
 
-        val activityName = stringParameter {
+        val fragmentName = stringParameter {
             name = """
-                activity名
-                请输入activity名称，请不要包含组件前缀，请不要包含'Activity'后缀
+                fragment名
+                请输入fragment名称，请不要包含组件前缀，请不要包含'fragment'后缀
             """.trimIndent()
             default = "Main"
-            help = "请输入名称，请不要包含前缀名，请不要不包含'Activity'"
+            help = "请输入名称，请不要包含前缀名，请不要不包含'Fragment'"
             constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
         }
 
@@ -53,7 +53,7 @@ val baseMvvmActivityTemplate
             default = "activity_"
             help = "请输入布局名，默认自动生成"
             constraints = listOf(Constraint.LAYOUT, Constraint.UNIQUE, Constraint.NONEMPTY)
-            suggest = { createLayoutName(componentName.value, BaseMvvmConstant.PREFIX_LAYOUT_ACTIVITY, activityName.value) }
+            suggest = { createLayoutName(componentName.value, BaseMvvmConstant.PREFIX_LAYOUT_FRAGMENT, fragmentName.value) }
         }
 
         val packageName = stringParameter {
@@ -69,18 +69,18 @@ val baseMvvmActivityTemplate
 
         widgets(
             TextFieldWidget(componentName),
-            TextFieldWidget(activityName),
+            TextFieldWidget(fragmentName),
             TextFieldWidget(layoutName),
             TextFieldWidget(packageName)
         )
 
         recipe = { data: TemplateData ->
-            baseMvvmActivityRecipe(
+            baseMvvmFragmentRecipe(
                 moduleData = data as ModuleTemplateData,
                 packageName = packageName.value,
-                activityName = "${componentName.value}${activityName.value}${BaseMvvmConstant.POSTFIX_ACTIVITY}",
+                fragmentName = "${componentName.value}${fragmentName.value}${BaseMvvmConstant.POSTFIX_FRAGMENT}",
                 layoutName = layoutName.value,
-                viewModelName = "${componentName.value}${activityName.value}${BaseMvvmConstant.POSTfIX_VIEWMODEL}",
+                viewModelName = "${componentName.value}${fragmentName.value}${BaseMvvmConstant.POSTfIX_VIEWMODEL}",
                 bindingName = createBindingName(layoutName.value)
             )
         }

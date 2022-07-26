@@ -21,7 +21,6 @@ import com.vesync.base.BaseMvvmActivity
 import ${applicationPackage}.BR
 import ${applicationPackage}.R
 import ${applicationPackage}.databinding.$bindingName
-import ${packageName}.${viewModelName}
 
 class $activityName : BaseMvvmActivity<$bindingName, $viewModelName>() {
 
@@ -52,4 +51,4 @@ class $activityName : BaseMvvmActivity<$bindingName, $viewModelName>() {
 
     override fun createViewModel(activity: FragmentActivity): $viewModelName = ViewModelProviders.of(activity).get($viewModelName::class.java)
 }
-"""
+""".trimIndent()

@@ -11,7 +11,7 @@ fun baseMvvmLayout(
     
         <variable
             name="${createLayoutViewModelName(viewModelName)}"
-            type="${packageName}.viewmodel.${viewModelName}" />
+            type="${packageName}.${viewModelName}" />
 
     </data>
 
