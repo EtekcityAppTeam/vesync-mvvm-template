@@ -1,4 +1,4 @@
-package com.github.houweiandroid.vesyncmvvmtemplate
+package com.github.etekcityteam.vesyncmvvmtemplate
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls

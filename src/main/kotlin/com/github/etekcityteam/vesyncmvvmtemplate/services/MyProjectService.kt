@@ -1,7 +1,7 @@
-package com.github.houweiandroid.vesyncmvvmtemplate.services
+package com.github.etekcityteam.vesyncmvvmtemplate.services
 
 import com.intellij.openapi.project.Project
-import com.github.houweiandroid.vesyncmvvmtemplate.MyBundle
+import com.github.etekcityteam.vesyncmvvmtemplate.MyBundle
 
 class MyProjectService(project: Project) {
 

@@ -2,7 +2,7 @@
 <idea-plugin>
     <id>com.github.houweiandroid.vesyncmvvmtemplate</id>
     <name>vesync-mvvm-template</name>
-    <vendor>houweiandroid</vendor>
+    <vendor>etekcityteam</vendor>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>org.jetbrains.android</depends>
@@ -10,12 +10,12 @@
 <!--    <depends>com.intellij.modules.java</depends>-->
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.houweiandroid.vesyncmvvmtemplate.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.houweiandroid.vesyncmvvmtemplate.services.MyProjectService"/>
+        <applicationService serviceImplementation="com.github.etekcityteam.vesyncmvvmtemplate.services.MyApplicationService"/>
+        <projectService serviceImplementation="com.github.etekcityteam.vesyncmvvmtemplate.services.MyProjectService"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.houweiandroid.vesyncmvvmtemplate.listeners.MyProjectManagerListener"
+        <listener class="com.github.etekcityteam.vesyncmvvmtemplate.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
     <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">

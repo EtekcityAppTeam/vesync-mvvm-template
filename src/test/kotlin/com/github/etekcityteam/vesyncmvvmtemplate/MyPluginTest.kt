@@ -1,4 +1,4 @@
-package com.github.houweiandroid.vesyncmvvmtemplate
+package com.github.etekcityteam.vesyncmvvmtemplate
 
 import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.psi.xml.XmlFile
