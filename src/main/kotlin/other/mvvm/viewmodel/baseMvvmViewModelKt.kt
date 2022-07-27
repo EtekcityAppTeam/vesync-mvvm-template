@@ -12,4 +12,4 @@ import com.vesync.base.BaseViewModel
 class ${viewModelName}(application: Application) : BaseViewModel(application) {
 
 }
-"""
+""".trimIndent()

@@ -10,17 +10,19 @@ fun baseMvvmFragmentKt(
     viewModelName: String,
     layoutName: String
 ) = """
-package com.vesync.store.ui.main
+package $packageName
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.vesync.base.BaseMvvmFragment
-import ${applicationPackage}.BR
-import ${applicationPackage}.R
-import ${applicationPackage}.databinding.$bindingName
+import com.vesync.base.BaseMvvmFragment${
+    if (!applicationPackage.isNullOrBlank()) {
+        "\nimport ${applicationPackage}.BR\nimport ${applicationPackage}.R"
+    } else ""
+}
+import ${applicationPackage ?: packageName}.databinding.$bindingName
 
 class $fragmentName : BaseMvvmFragment<$bindingName, $viewModelName>() {
 

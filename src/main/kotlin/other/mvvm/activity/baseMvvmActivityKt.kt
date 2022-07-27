@@ -17,10 +17,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
-import com.vesync.base.BaseMvvmActivity
-import ${applicationPackage}.BR
-import ${applicationPackage}.R
-import ${applicationPackage}.databinding.$bindingName
+import com.vesync.base.BaseMvvmActivity${
+    if (!applicationPackage.isNullOrBlank()) {
+        "\nimport ${applicationPackage}.BR\nimport ${applicationPackage}.R"
+    } else ""
+}
+import ${applicationPackage ?: packageName}.databinding.$bindingName
 
 class $activityName : BaseMvvmActivity<$bindingName, $viewModelName>() {
 
