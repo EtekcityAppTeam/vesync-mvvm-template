@@ -20,7 +20,8 @@ fun RecipeExecutor.baseMvvmActivityRecipe(
     activityName: String,
     layoutName: String,
     viewModelName: String,
-    bindingName: String
+    bindingName: String,
+    description: String
 ) {
 
     val (projectData, srcOut, resOut) = moduleData
@@ -41,7 +42,8 @@ fun RecipeExecutor.baseMvvmActivityRecipe(
         bindingName = bindingName,
         viewModelName = viewModelName,
         layoutName = layoutName,
-        packageName = packageName
+        packageName = packageName,
+        description = description
     )
     save(mvvmActivity, srcOut.resolve("${activityName}.kt"))
     // save layout

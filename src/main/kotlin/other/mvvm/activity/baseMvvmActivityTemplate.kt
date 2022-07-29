@@ -45,6 +45,15 @@ val baseMvvmActivityTemplate
             constraints = listOf(Constraint.UNIQUE, Constraint.NONEMPTY)
         }
 
+        val description = stringParameter {
+            name = """
+                文件描述
+                请输入该文件的描述，作为文件头部'Description'属性
+            """.trimIndent()
+            default = ""
+            help = "请输入该文件的描述，作为文件头部'Description'属性"
+        }
+
         val layoutName = stringParameter {
             name = """
                 布局名
@@ -70,6 +79,7 @@ val baseMvvmActivityTemplate
         widgets(
             TextFieldWidget(componentName),
             TextFieldWidget(activityName),
+            TextFieldWidget(description),
             TextFieldWidget(layoutName),
             TextFieldWidget(packageName)
         )
@@ -81,7 +91,8 @@ val baseMvvmActivityTemplate
                 activityName = "${componentName.value}${activityName.value}${BaseMvvmConstant.POSTFIX_ACTIVITY}",
                 layoutName = layoutName.value,
                 viewModelName = "${componentName.value}${activityName.value}${BaseMvvmConstant.POSTfIX_VIEWMODEL}",
-                bindingName = createBindingName(layoutName.value)
+                bindingName = createBindingName(layoutName.value),
+                description = description.value
             )
         }
     }

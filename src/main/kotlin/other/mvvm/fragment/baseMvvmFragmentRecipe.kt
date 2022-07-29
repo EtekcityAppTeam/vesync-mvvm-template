@@ -19,7 +19,8 @@ fun RecipeExecutor.baseMvvmFragmentRecipe(
     fragmentName: String,
     layoutName: String,
     viewModelName: String,
-    bindingName: String
+    bindingName: String,
+    description: String
 ) {
 
     val (projectData, srcOut, resOut) = moduleData
@@ -31,7 +32,8 @@ fun RecipeExecutor.baseMvvmFragmentRecipe(
         fragmentName = fragmentName,
         bindingName = bindingName,
         viewModelName = viewModelName,
-        layoutName = layoutName
+        layoutName = layoutName,
+        description = description
     )
     save(mvvmFragment, srcOut.resolve("${fragmentName}.kt"))
     // save layout

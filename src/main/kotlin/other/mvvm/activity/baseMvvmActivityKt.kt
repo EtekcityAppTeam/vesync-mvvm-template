@@ -1,6 +1,12 @@
 package other.mvvm.activity
 
+import org.apache.commons.lang3.SystemUtils
+import org.apache.commons.lang3.SystemUtils.USER_NAME
+import other.mvvm.BaseMvvmConstant
+import other.mvvm.BaseMvvmConstant.Companion.HEADER_DATE_FORMAT
+import other.mvvm.BaseMvvmConstant.Companion.HEADER_TIME_FORMAT
 import other.mvvm.layout.createLayoutViewModelName
+import java.text.SimpleDateFormat
 
 fun baseMvvmActivityKt(
     applicationPackage: String?,
@@ -8,7 +14,8 @@ fun baseMvvmActivityKt(
     bindingName: String,
     viewModelName: String,
     layoutName: String,
-    packageName: String
+    packageName: String,
+    description: String
 ) = """
 package $packageName
 
@@ -24,12 +31,15 @@ import com.vesync.base.BaseMvvmActivity${
 }
 import ${applicationPackage ?: packageName}.databinding.$bindingName
 
+/**
+ * Author: $USER_NAME
+ * Date: ${SimpleDateFormat(HEADER_TIME_FORMAT).format(System.currentTimeMillis())}
+ * Description: $description
+ * History:
+ * <author> <time> <version> <desc>
+ * $USER_NAME ${SimpleDateFormat(HEADER_DATE_FORMAT).format(System.currentTimeMillis())} 1.0 首次创建
+ */
 class $activityName : BaseMvvmActivity<$bindingName, $viewModelName>() {
-
-    companion object {
-
-        fun start(context: Context) = context.startActivity(Intent(context, ${activityName}::class.java).apply { })
-    }
 
     override fun initParam() {
         super.initParam()
@@ -52,5 +62,10 @@ class $activityName : BaseMvvmActivity<$bindingName, $viewModelName>() {
     override fun initVariableId(): Int = BR.${createLayoutViewModelName(viewModelName)}
 
     override fun createViewModel(activity: FragmentActivity): $viewModelName = ViewModelProviders.of(activity).get($viewModelName::class.java)
+    
+    companion object {
+
+        fun start(context: Context) = context.startActivity(Intent(context,     ${activityName}    ::class.java).apply { })
+    }
 }
 """.trimIndent()

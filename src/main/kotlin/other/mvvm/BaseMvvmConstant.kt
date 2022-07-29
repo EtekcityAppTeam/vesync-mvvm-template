@@ -19,5 +19,8 @@ class BaseMvvmConstant {
         const val POSTfIX_BINDING = "Binding"
         const val POSTFIX_FRAGMENT = "Fragment"
         const val POSTfIX_VIEWMODEL = "ViewModel"
+
+        const val HEADER_DATE_FORMAT = "yyyy/MM/dd"
+        const val HEADER_TIME_FORMAT = "yyyy/MM/dd HH:mm"
     }
 }
