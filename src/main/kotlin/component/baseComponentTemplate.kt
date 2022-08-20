@@ -29,14 +29,26 @@ val baseComponentTemplate
             default = ""
         }
 
+        val packageName = stringParameter {
+            name = """
+                相对路径名
+                可自定义相对路径，文件会被创建在此路径之下
+            """.trimIndent()
+            visible = { !isNewModule }
+            default = "com.etekcity.vesyncplatform"
+            constraints = listOf(Constraint.PACKAGE)
+            suggest = { packageName }
+        }
+
         widgets(
-            TextFieldWidget(componentName)
+            TextFieldWidget(componentName),
+            TextFieldWidget(packageName)
         )
 
         recipe = { data: TemplateData ->
             baseComponentRecipe(
                 moduleData = data as ModuleTemplateData,
-                packageName = "",
+                packageName = packageName.value,
                 componentName = componentName.value
             )
         }

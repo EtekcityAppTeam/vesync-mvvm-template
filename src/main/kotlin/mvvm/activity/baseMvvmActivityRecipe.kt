@@ -3,7 +3,7 @@ package mvvm.activity
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
-import mvvm.layout.baseMvvmLayout
+import mvvm.layout.baseMvvmLayoutXml
 import mvvm.viewmodel.baseMvvmViewModelKt
 
 /**
@@ -47,7 +47,7 @@ fun RecipeExecutor.baseMvvmActivityRecipe(
     )
     save(mvvmActivity, srcOut.resolve("${activityName}.kt"))
     // save layout
-    val mvvmLayout = baseMvvmLayout(
+    val mvvmLayout = baseMvvmLayoutXml(
         viewModelName = viewModelName,
         packageName = packageName
     )

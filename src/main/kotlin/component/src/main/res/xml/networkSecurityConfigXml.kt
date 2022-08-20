@@ -1,0 +1,16 @@
+package component.src.main.res.xml
+
+fun networkSecurityConfigXml() = """
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates
+                overridePins="true"
+                src="system" />
+            <certificates
+                overridePins="true"
+                src="user" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
+""".trimIndent()

@@ -2,7 +2,7 @@ package mvvm.fragment
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import mvvm.layout.baseMvvmLayout
+import mvvm.layout.baseMvvmLayoutXml
 import mvvm.viewmodel.baseMvvmViewModelKt
 
 /**
@@ -37,7 +37,7 @@ fun RecipeExecutor.baseMvvmFragmentRecipe(
     )
     save(mvvmFragment, srcOut.resolve("${fragmentName}.kt"))
     // save layout
-    val mvvmLayout = baseMvvmLayout(
+    val mvvmLayout = baseMvvmLayoutXml(
         viewModelName = viewModelName,
         packageName = packageName
     )

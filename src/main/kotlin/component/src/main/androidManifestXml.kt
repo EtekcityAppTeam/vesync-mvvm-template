@@ -1,7 +1,7 @@
 package component.src.main
 
-fun androidManifestKt(
-
+fun androidManifestXml(
+    componentName: String
 ) = """
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -11,7 +11,7 @@ fun androidManifestKt(
 
     <application android:networkSecurityConfig="@xml/network_security_config">
         <activity
-            android:name="com.vesync.CompMainActivity"
+            android:name="com.vesync.${componentName}MainActivity"
             android:exported="false" />
     </application>
 

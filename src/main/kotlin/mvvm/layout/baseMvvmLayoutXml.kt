@@ -1,6 +1,6 @@
 package mvvm.layout
 
-fun baseMvvmLayout(
+fun baseMvvmLayoutXml(
     viewModelName: String,
     packageName: String
 ) = """

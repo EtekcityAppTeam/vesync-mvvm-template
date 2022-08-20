@@ -20,5 +20,6 @@
     </applicationListeners>
     <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
         <wizardTemplateProvider implementation="mvvm.BaseMvvmActivityTemplateProviderImpl" />
+        <wizardTemplateProvider implementation="component.BaseComponentTemplateProviderImpl" />
     </extensions>
 </idea-plugin>
