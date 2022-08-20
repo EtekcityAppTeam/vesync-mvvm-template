@@ -1,10 +1,10 @@
-package other.mvvm.activity
+package mvvm.activity
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
-import other.createBindingName
-import other.createLayoutName
-import other.mvvm.BaseMvvmConstant
+import mvvm.createBindingName
+import mvvm.createLayoutName
+import mvvm.BaseMvvmConstant
 
 /**
  * Author: YulinZhang

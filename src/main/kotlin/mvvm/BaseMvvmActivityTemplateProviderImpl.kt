@@ -1,9 +1,9 @@
-package other
+package mvvm
 
 import com.android.tools.idea.wizard.template.Template
 import com.android.tools.idea.wizard.template.WizardTemplateProvider
-import other.mvvm.activity.baseMvvmActivityTemplate
-import other.mvvm.fragment.baseMvvmFragmentTemplate
+import mvvm.activity.baseMvvmActivityTemplate
+import mvvm.fragment.baseMvvmFragmentTemplate
 
 /**
  * Author: YulinZhang

@@ -1,4 +1,4 @@
-package other.mvvm.layout
+package mvvm.layout
 
 fun baseMvvmLayout(
     viewModelName: String,

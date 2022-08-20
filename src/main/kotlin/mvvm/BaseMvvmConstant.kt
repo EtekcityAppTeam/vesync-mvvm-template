@@ -1,4 +1,4 @@
-package other.mvvm
+package mvvm
 
 /**
  * Author: YulinZhang

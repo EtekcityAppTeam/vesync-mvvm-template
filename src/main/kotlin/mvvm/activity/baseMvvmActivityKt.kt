@@ -1,11 +1,9 @@
-package other.mvvm.activity
+package mvvm.activity
 
-import org.apache.commons.lang3.SystemUtils
 import org.apache.commons.lang3.SystemUtils.USER_NAME
-import other.mvvm.BaseMvvmConstant
-import other.mvvm.BaseMvvmConstant.Companion.HEADER_DATE_FORMAT
-import other.mvvm.BaseMvvmConstant.Companion.HEADER_TIME_FORMAT
-import other.mvvm.layout.createLayoutViewModelName
+import mvvm.BaseMvvmConstant.Companion.HEADER_DATE_FORMAT
+import mvvm.BaseMvvmConstant.Companion.HEADER_TIME_FORMAT
+import mvvm.layout.createLayoutViewModelName
 import java.text.SimpleDateFormat
 
 fun baseMvvmActivityKt(

@@ -1,8 +1,8 @@
-package other.mvvm.fragment
+package mvvm.fragment
 
 import org.apache.commons.lang3.SystemUtils
-import other.mvvm.BaseMvvmConstant
-import other.mvvm.layout.createLayoutViewModelName
+import mvvm.BaseMvvmConstant
+import mvvm.layout.createLayoutViewModelName
 import java.text.SimpleDateFormat
 
 fun baseMvvmFragmentKt(

@@ -1,4 +1,4 @@
-package other.mvvm.viewmodel
+package mvvm.viewmodel
 
 fun baseMvvmViewModelKt(
     viewModelName: String,

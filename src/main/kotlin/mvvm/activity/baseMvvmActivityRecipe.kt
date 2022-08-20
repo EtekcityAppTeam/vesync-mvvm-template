@@ -1,22 +1,23 @@
-package other.mvvm.fragment
+package mvvm.activity
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import other.mvvm.layout.baseMvvmLayout
-import other.mvvm.viewmodel.baseMvvmViewModelKt
+import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
+import mvvm.layout.baseMvvmLayout
+import mvvm.viewmodel.baseMvvmViewModelKt
 
 /**
  * Author: YulinZhang
- * Date: 2022/7/26 14:14
+ * Date: 2022/7/6 16:42
  * Description:
  * History:
  * <author> <time> <version> <desc>
- * YulinZhang 2022/7/26 1.0 首次创建
+ * YulinZhang 2022/7/6 1.0 首次创建
  */
-fun RecipeExecutor.baseMvvmFragmentRecipe(
+fun RecipeExecutor.baseMvvmActivityRecipe(
     moduleData: ModuleTemplateData,
     packageName: String,
-    fragmentName: String,
+    activityName: String,
     layoutName: String,
     viewModelName: String,
     bindingName: String,
@@ -25,17 +26,26 @@ fun RecipeExecutor.baseMvvmFragmentRecipe(
 
     val (projectData, srcOut, resOut) = moduleData
 
-    // save fragment
-    val mvvmFragment = baseMvvmFragmentKt(
-        applicationPackage = projectData.applicationPackage,
+    generateManifest(
+        moduleData = moduleData,
+        activityClass = activityName,
         packageName = packageName,
-        fragmentName = fragmentName,
+        isLauncher = false,
+        hasNoActionBar = false,
+        generateActivityTitle = false
+    )
+
+    // save activity
+    val mvvmActivity = baseMvvmActivityKt(
+        applicationPackage = projectData.applicationPackage,
+        activityName = activityName,
         bindingName = bindingName,
         viewModelName = viewModelName,
         layoutName = layoutName,
+        packageName = packageName,
         description = description
     )
-    save(mvvmFragment, srcOut.resolve("${fragmentName}.kt"))
+    save(mvvmActivity, srcOut.resolve("${activityName}.kt"))
     // save layout
     val mvvmLayout = baseMvvmLayout(
         viewModelName = viewModelName,

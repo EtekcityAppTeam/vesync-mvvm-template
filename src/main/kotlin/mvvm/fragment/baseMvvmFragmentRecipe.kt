@@ -1,23 +1,22 @@
-package other.mvvm.activity
+package mvvm.fragment
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
-import other.mvvm.layout.baseMvvmLayout
-import other.mvvm.viewmodel.baseMvvmViewModelKt
+import mvvm.layout.baseMvvmLayout
+import mvvm.viewmodel.baseMvvmViewModelKt
 
 /**
  * Author: YulinZhang
- * Date: 2022/7/6 16:42
+ * Date: 2022/7/26 14:14
  * Description:
  * History:
  * <author> <time> <version> <desc>
- * YulinZhang 2022/7/6 1.0 首次创建
+ * YulinZhang 2022/7/26 1.0 首次创建
  */
-fun RecipeExecutor.baseMvvmActivityRecipe(
+fun RecipeExecutor.baseMvvmFragmentRecipe(
     moduleData: ModuleTemplateData,
     packageName: String,
-    activityName: String,
+    fragmentName: String,
     layoutName: String,
     viewModelName: String,
     bindingName: String,
@@ -26,26 +25,17 @@ fun RecipeExecutor.baseMvvmActivityRecipe(
 
     val (projectData, srcOut, resOut) = moduleData
 
-    generateManifest(
-        moduleData = moduleData,
-        activityClass = activityName,
-        packageName = packageName,
-        isLauncher = false,
-        hasNoActionBar = false,
-        generateActivityTitle = false
-    )
-
-    // save activity
-    val mvvmActivity = baseMvvmActivityKt(
+    // save fragment
+    val mvvmFragment = baseMvvmFragmentKt(
         applicationPackage = projectData.applicationPackage,
-        activityName = activityName,
+        packageName = packageName,
+        fragmentName = fragmentName,
         bindingName = bindingName,
         viewModelName = viewModelName,
         layoutName = layoutName,
-        packageName = packageName,
         description = description
     )
-    save(mvvmActivity, srcOut.resolve("${activityName}.kt"))
+    save(mvvmFragment, srcOut.resolve("${fragmentName}.kt"))
     // save layout
     val mvvmLayout = baseMvvmLayout(
         viewModelName = viewModelName,
